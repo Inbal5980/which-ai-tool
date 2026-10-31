@@ -1,2 +1,8 @@
-# which-ai-tool
-איזה כלי הייתם בוחרים? · משחק הצבעה · Live Zoom voting game: which AI tool would you pick?
+# איזה כלי הייתם בוחרים? · משחק הצבעה
+
+משחק הצבעה חי לסדנת AI בזום: המשתתפים מצביעים מהטלפון איזה כלי AI מתאים לכל תרחיש, והתוצאות מופיעות בזמן אמת במסך המנחה (/host).
+
+**לינק לאתר החי:** https://which-ai-tool.sites.tab.bot/
+
+---
+האתר רץ כ-Cloudflare Worker: `_worker.js` הוא צד השרת (שמירת ההצבעות ב-KV, לפי `tab-site.json`), ושאר הקבצים הם צד הלקוח.
