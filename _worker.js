@@ -12,8 +12,9 @@ const SUGGESTIONS = {
   7: { answer: "ask",    why: "הנוהל פתוח בדפדפן – Ask Gemini הופך את הדף הפתוח לטבלת מועדים." },
 };
 
-// קוד המנחה: /host?k=HOST_KEY
-const HOST_KEY = "jbcgdd";
+// קוד המנחה: /host?k=<הקוד>. הקוד נקרא ממשתנה הסביבה HOST_KEY אם הוגדר, אחרת מהקבוע כאן.
+// בגרסה הציבורית בגיטהאב הקבוע הוא "CHANGE_ME" ומסך המנחה חסום עד שמחליפים אותו.
+const HOST_KEY = "CHANGE_ME";
 
 // ======================================================================
 const CARD_IDS = [1, 2, 3, 4, 5, 6, 7];
@@ -130,7 +131,8 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
-    const isHost = url.searchParams.get("k") === HOST_KEY;
+    const hostKey = (env && env.HOST_KEY) || HOST_KEY;
+    const isHost = hostKey !== "CHANGE_ME" && url.searchParams.get("k") === hostKey;
 
     if (path === "/host" || path === "/host.html") {
       if (!isHost) {
